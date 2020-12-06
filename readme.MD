@@ -1,5 +1,7 @@
 # GithubRepoCleaner
 
+Python script to allow quick deletion of Github repositories.
+
 ## Setup
 
 - `pip install -r requirements.txt`

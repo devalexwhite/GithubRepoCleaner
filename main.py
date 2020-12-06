@@ -11,12 +11,6 @@ token = console.input("\nAccess token: ")
 
 g = Github(token)
 
-repoTable = Table(title="Repos")
-repoTable.add_column("#")
-repoTable.add_column("Name")
-repoTable.add_column("URL")
-repoTable.add_column("Privacy")
-
   
 def printRepos():
   allRepos = []
@@ -25,12 +19,14 @@ def printRepos():
   repoTable.add_column("Name")
   repoTable.add_column("URL")
   repoTable.add_column("Privacy")
+  repoTable.add_column("Forked?")
   i = 0
   g.get_user().update()
   for repo in g.get_user().get_repos():
     allRepos.append(repo)
     i+=1
-    repoTable.add_row(str(i), repo.name, repo.html_url, ("Private" if repo.private else "Public"))
+
+    repoTable.add_row(str(i), repo.name, repo.html_url, ("Private" if repo.private else "Public"), ("Yes" if repo.fork else "No"))
   console.print(repoTable)
   return allRepos
 
